@@ -16,6 +16,7 @@ for td in soup.find_all("td"):
      
    list_td.extend(td)
 
+
 with open("kazikalko123.csv", "a+", newline="",encoding=("utf8")) as f:
 	writer = csv.writer(f)
 	writer.writerow(list)
