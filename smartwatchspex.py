@@ -46,11 +46,11 @@ for key, value in merge_data.items():
 start_1 = ["This", "The", "Do you know", "You know"]
 start_2 = ["unique ", "exclusive ", "different ", "great "]
 
-m_first_sentence= random.choice(start_1) +" "+ merge_data["Device Name"] +" is a " + random.choice(start_2) + "style and functionality that keeps you ahead of time with its "+random.choice(start_2)+"features."
-m_general= merge_data["Device Name"] + " release date was "+ merge_data["Release"]+"." + merge_data["Ideal for (Gender)"] + " can wear this "+ merge_data["Device Type"]+"."
-m_display= merge_data["Device Name"] + " has "+ merge_data["Screen Size"]+ " "+ merge_data["Type"]+ " display"+ ".It's screen resolution is "+ merge_data["Screen Resolution"]+ " "+ "and pixel density"+ merge_data["Pixel Density"]+ ".For screen protection, you will find here "+ merge_data["Screen Protection"]+"."
-m_body= merge_data["Device Name"] + " "+ merge_data["Device Type"]+ " is "+merge_data["Shape"]+ " shape."+merge_data["brandname"]+" gives "+merge_data["Case/Bezel"]+ " and, it's case dimensions are "+ merge_data["Case Dimensions"]+ "."+ merge_data["Strap Material"]+ " strap and it's size is "+ merge_data["Strap/Band Size"]+"."+merge_data["Colors"]+ " variant available. "+merge_data["Device Name"]+" weight is "+merge_data["Weight"]+"."
-m_platform= merge_data["brandname"] + " used "+ merge_data["Operating System"]
+m_first_sentence= random.choice(start_1) +" "+ merge_data.get("Device Name","None") +" is a " + random.choice(start_2) + "style and functionality that keeps you ahead of time with its "+random.choice(start_2)+"features."
+m_general= merge_data.get("Device Name","none") + " release date was "+ merge_data.get("Release","none")+"." + merge_data.get("Ideal for (Gender)","none") + " can wear this "+ merge_data.get("Device Type","none")+"."
+m_display= merge_data["Device Name"] + " has "+ merge_data.get("Screen Size","none")+ " "+ merge_data.get("Type","none")+ " display"+ ".It's screen resolution is "+ merge_data.get("Screen Resolution","None")+ " "+ "and pixel density"+ merge_data.get("Pixel Density","none")+ ".For screen protection, you will find here "+ merge_data.get("Screen Protection","none")+"."
+m_body= merge_data.get("Device Name","none") + " "+ merge_data.get("Device Type","none")+ " is "+merge_data.get("Shape","none")+ " shape."+merge_data.get("brandname","none")+" gives "+merge_data.get("Case/Bezel","none")+ " and, it's case dimensions are "+ merge_data.get("Case Dimensions","none")+ "."+ merge_data.get("Strap Material","none")+ " strap and it's size is "+ merge_data.get("Strap/Band Size","none")+"."+merge_data.get("Colors","none")+ " variant available. "+merge_data.get("Device Name","none")+" weight is "+merge_data.get("Weight","none")+"."
+m_platform= merge_data.get("brandname","none") + " used "+ merge_data.get("Operating System","none")
 #m_release_date= merge_data["Device Name"] + " release date was "+ merge_data["Release"]
 
 
