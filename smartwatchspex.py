@@ -37,6 +37,7 @@ merge_data={**merge_list, **brand_dict}
 for key, value in merge_data.items():
       if value == '-':
            merge_data[key] = ' information not available'
+
 #dictionary data access single item
 #test_dict=merge_data["Chipset"]
 #print(merge_data)
