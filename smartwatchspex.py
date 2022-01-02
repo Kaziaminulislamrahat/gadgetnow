@@ -49,6 +49,8 @@ if merge_data.get("Email") =="Yes": notification.append("Email")
 if merge_data.get("Incoming Call Alert") =="Yes": notification.append("Incoming Call Alert")
 if merge_data.get("Calendar Reminder") =="Yes": notification.append("Calendar Reminder")
 if merge_data.get("Weather Forecast") =="Yes": notification.append("Weather Forecast")
+
+#List to string Convert
 test_string= ','.join(map(str, notification))
 
 
