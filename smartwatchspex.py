@@ -64,7 +64,7 @@ memory= merge_data.get("Device Name","None") + " has "+ merge_data.get("RAM","no
 network_conectivity= merge_data.get("brandname","None") + " offer "+ merge_data.get("Sim","none")+" sim card."+ merge_data.get("Device Name","None")+ " has bluetooth "+ merge_data.get("Bluetooth","None")+", WiFi " +merge_data.get("WiFi","WiFi")+". "+ merge_data.get("NFC","None information found related to")+", NFC available in this gadget."+merge_data.get("USB","None information found related to ")+" USB and "+merge_data.get("Radio","None information found related to ")+" radio."
 activity_tracker= merge_data.get("brandname","None") + " gives for tracking purpose features "+" distance,"+ merge_data.get("Distance","no")+ " heart rate,"+ merge_data.get("Heart Rate","no")+" step tracking, "+ merge_data.get("Steps","no")+" calories consumption " + merge_data.get("Calories Consumption","no ")+" and sleep tracker "+merge_data.get("Sleep","none")+ "."
 control= "For controling purpose the"+merge_data.get("brandname","none")+" "+ merge_data.get("Device Type","none")+" I am discussing now. "+ merge_data.get("Touch","none")+", you will get touch screen facility. A smartwatch screen customization is important here,you will get "+ merge_data.get("Watchface","no")+" watchface. "+merge_data.get("Voice Command"," Not available ")+" vocie command you can use this "+merge_data.get("Device Type","Not")+"."+merge_data.get("Personal Assistant","No personal assistant ")+" is available for you."
-notifications=test_string+merge_data.get("Device Name","None")+ " gives this notifications "
+notifications=test_string+" "+merge_data.get("Device Name","None")+ " gives this notifications. "
 
 
 
