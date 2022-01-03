@@ -94,4 +94,32 @@ battery=merge_data.get("Device Name", "None")+" has "+merge_data.get("Capacity",
 
 
 #Content Print Part
-print(first_sentence,"\n",general,"\n",display,"\n",body,"\n",platform,"\n",memory,"\n",network_conectivity,"\n",activity_tracker,"\n",control,"\n",notifications,"\n",sensors,"\n",sounds,"\n",battery)
+#print(first_sentence,"\n",general,"\n",display,"\n",body,"\n",platform,"\n",memory,"\n",network_conectivity,"\n",activity_tracker,"\n",control,"\n",notifications,"\n",sensors,"\n",sounds,"\n",battery)
+content_descrption=(first_sentence,"\n",general,"\n",display,"\n",body,"\n",platform,"\n",memory,"\n",network_conectivity,"\n",activity_tracker,"\n",control,"\n",notifications,"\n",sensors,"\n",sounds,"\n",battery)
+
+#wordpress Post Section
+
+import pybase64 #libary module change
+#Authenticate
+user = "SBauto"  # the user in which the auth. token is given
+pythonapp = '9Bfc ZtB0 AEvK M6HR XySh jdCn'  # paste here your auth. token
+url = 'https://tech4urhand.com/wp-json/wp/v2'  # the url of the wp access location
+token = pybase64.standard_b64encode((user + ':' + pythonapp).encode('utf-8'))  # we have to encode the usr and pw
+headers = {'Authorization': 'Basic ' + token.decode('utf-8')}
+
+wp_title = title+" "+"specification & Reviews"
+slug = wp_title
+status = 'publish'
+content = "<p>content_descrption</p>"
+
+post = {'title': wp_title,
+           'slug': slug,
+           'status': status,
+           'content':content,
+           'categories':'1',
+           'author': '1',
+           'format': 'standard',
+
+           }
+r = requests.post(url + '/posts', headers=headers, json=post)
+print(r)
