@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 import random
 
-url="https://www.smartwatchspex.com/amazfit-nexo/"
+url="https://www.smartwatchspex.com/matrix-powerwatch-2-luxe/"
 headers = headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"}
 
 response=requests.get(url,headers=headers)
@@ -85,7 +85,7 @@ body= merge_data.get("Device Name","none") + " "+ merge_data.get("Device Type","
 platform= merge_data.get("brandname","none") + " used "+ merge_data.get("Operating System","none")+"." + merge_data.get("brandname","none")+ " used "+ merge_data.get("Chipset","none") +" chipset."+ merge_data.get("CPU","none") +" CPU and "+ merge_data.get("GPU","none")+" used for this "+merge_data.get("Device Type","none")+ "."
 memory= merge_data.get("Device Name","None") + " has "+ merge_data.get("RAM","none")+" ram."+ merge_data.get("brandname","None")+ " provides "+ merge_data.get("Internal Memory","no internal memory.")+ " internal memory and "+ merge_data.get("SD Card Slot","no extra memory card you can use.")+" you can use extra memory card."
 network_conectivity= merge_data.get("brandname","None") + " offer "+ merge_data.get("Sim","none")+" sim card."+ merge_data.get("Device Name","None")+ " has bluetooth "+ merge_data.get("Bluetooth","None")+", WiFi " +merge_data.get("WiFi","WiFi")+". "+ merge_data.get("NFC","None information found related to")+", NFC available in this gadget."+merge_data.get("USB","None information found related to ")+" USB and "+merge_data.get("Radio","None information found related to ")+" radio."
-#activity_tracker= merge_data.get("brandname","None") + " gives for tracking purpose features "+" distance,"+ merge_data.get("Distance","no")+ " heart rate,"+ merge_data.get("Heart Rate","no")+" step tracking, "+ merge_data.get("Steps","no")+" calories consumption " + merge_data.get("Calories Consumption","no ")+" and sleep tracker "+merge_data.get("Sleep","none")+ "."
+activity_tracker= merge_data.get("brandname","None") + " gives for tracking purpose features "+" distance,"+ merge_data.get("Distance","no")+ " heart rate,"+ merge_data.get("Heart Rate","no")+" step tracking, "+ merge_data.get("Steps","no")+" calories consumption " + merge_data.get("Calories Consumption","no ")+" and sleep tracker "+merge_data.get("Sleep","none")+ "."
 control= "For controlling purpose the"+merge_data.get("brandname","none")+" "+ merge_data.get("Device Type","none")+" I am discussing now. "+ merge_data.get("Touch","none")+", you will get touch screen facility. A smartwatch screen customization is important here,you will get "+ merge_data.get("Watchface","no")+" watchface. "+merge_data.get("Voice Command"," Not available ")+" voice command you can use this "+merge_data.get("Device Type","Not")+"."+merge_data.get("Personal Assistant","No personal assistant ")+" is available for you."
 notifications=notification_string+" "+merge_data.get("Device Name","None")+ " gives this notifications. "
 sensors=merge_data.get("Device Name","none")+ " gives these "+merge_data.get("Device Type","none")+" sensors " +sensor_string+ "."
@@ -111,7 +111,8 @@ headers = {'Authorization': 'Basic ' + token.decode('utf-8')}
 wp_title = title+" "+"specification & Reviews"
 slug = wp_title
 status = 'publish'
-contents = "<!-- wp:paragraph --><p>"+first_sentence +"</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>"+general +"</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>"+display +"</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>"+body+"</p><!-- wp:paragraph --><p>"+platform+"</p><!-- wp:paragraph --><p>"+memory+"</p><!-- wp:paragraph --><p>"+network_conectivity+"</p><!-- wp:paragraph --><p>"+control+"</p><!-- wp:paragraph --><p>"+notifications+"</p><!-- wp:paragraph --><p>"+sensors+"</p><!-- wp:paragraph --><p>"+sounds+"</p><!-- wp:paragraph --><p>"+battery+"</p>"
+contents = "<!-- wp:paragraph --><p>"+first_sentence +"</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>"+general +"</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>"+display +"</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>"+body+"</p><!-- wp:paragraph --><p>"+platform+"</p><!-- wp:paragraph --><p>"+memory+"</p><!-- wp:paragraph --><p>"+network_conectivity+"</p><!-- wp:paragraph --><p>"+control+"</p><!-- wp:paragraph --><p>"+notifications+"</p><!-- wp:paragraph --><p>"+sensors+"</p><!-- wp:paragraph --><p>"+sounds+"</p><!-- wp:paragraph --><p>"+battery+"</p>"+"</p><!-- wp:paragraph --><p>"+activity_tracker+"</p>"
+
 
 post = {'title': wp_title,
            'slug': slug,
