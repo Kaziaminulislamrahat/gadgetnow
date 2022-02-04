@@ -1,8 +1,10 @@
 import requests
 from bs4 import BeautifulSoup as bs
 import random
+import pandas as pd
 
-url="https://www.smartwatchspex.com/matrix-powerwatch-2-luxe/"
+
+url="https://www.smartwatchspex.com/montblanc-summit-2/"
 headers = headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"}
 
 response=requests.get(url,headers=headers)
@@ -28,10 +30,10 @@ del merge_list['Buy']
 #Brand Name Key and Value Collect for Dictionary
 brand=soup.find("span",attrs={"class":"aps-product-brand"}).text
 brand_dict={}
-brand_dict["brandname"]=brand.replace("Brand:","")
+brand_dict["Brand Name"]=brand.replace("Brand:","")
 
 #joint two dictionary
-merge_data={**merge_list, **brand_dict}
+merge_data={**brand_dict,**merge_list}
 
 #Value Manupulation when Blank
 for key, value in merge_data.items():
@@ -96,8 +98,17 @@ battery=merge_data.get("Device Name", "None")+" has "+merge_data.get("Capacity",
 
 #Content Print Part
 #print(first_sentence,"\n",general,"\n",display,"\n",body,"\n",platform,"\n",memory,"\n",network_conectivity,"\n",control,"\n",notifications,"\n",sensors,"\n",sounds,"\n",battery)
-#content_descrption=(first_sentence,"\n",general,"\n",display,"\n",body,"\n",platform,"\n",memory,"\n",network_conectivity,"\n",activity_tracker,"\n",control,"\n",notifications,"\n",sensors,"\n",sounds,"\n",battery)
 
+#Pandas table creation
+'''df = pd.DataFrame(table_right,table_left)
+print(df)'''
+
+#table insert trying
+'''for x in table_right:
+      for y in table_left:
+          xyz=("<td>",x,"</td>","<td>", y,"</td>")
+          joined_string = "".join(xyz)'''
+          
 #wordpress Post Section
 
 import pybase64 #libary module change
@@ -108,21 +119,47 @@ url = 'https://tech4urhand.com/wp-json/wp/v2'  # the url of the wp access locati
 token = pybase64.standard_b64encode((user + ':' + pythonapp).encode('utf-8'))  # we have to encode the usr and pw
 headers = {'Authorization': 'Basic ' + token.decode('utf-8')}
 
+
 wp_title = title+" "+"specification & Reviews"
 slug = wp_title
 status = 'publish'
-contents = "<!-- wp:paragraph --><p>"+first_sentence +"</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>"+general +"</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>"+display +"</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>"+body+"</p><!-- wp:paragraph --><p>"+platform+"</p><!-- wp:paragraph --><p>"+memory+"</p><!-- wp:paragraph --><p>"+network_conectivity+"</p><!-- wp:paragraph --><p>"+control+"</p><!-- wp:paragraph --><p>"+notifications+"</p><!-- wp:paragraph --><p>"+sensors+"</p><!-- wp:paragraph --><p>"+sounds+"</p><!-- wp:paragraph --><p>"+battery+"</p>"+"</p><!-- wp:paragraph --><p>"+activity_tracker+"</p>"
+contents = ("<!-- wp:paragraph --><p>"+first_sentence+"</p><!-- /wp:paragraph -->"+
+            "<!-- wp:paragraph --><p>"+general+"</p><!-- /wp:paragraph -->"+
+            "<!-- wp:paragraph --><p>"+display+"</p><!-- /wp:paragraph -->"+
+            "<!-- wp:paragraph --><p>"+body+"</p><!-- /wp:paragraph -->"+
+            "<!-- wp:paragraph --><p>"+platform+"</p><!-- /wp:paragraph -->"+
+            "<!-- wp:paragraph --><p>"+memory+"</p><!-- /wp:paragraph -->"+
+            "<!-- wp:paragraph --><p>"+network_conectivity+"</p><!-- /wp:paragraph -->"+
+            "<!-- wp:paragraph --><p>"+control+"</p><!-- /wp:paragraph -->"+
+            "<!-- wp:paragraph --><p>"+notifications+"</p><!-- /wp:paragraph -->"+
+            "<!-- wp:paragraph --><p>"+sensors+"</p><!-- /wp:paragraph -->"+
+            "<!-- wp:paragraph --><p>"+sounds+"</p><!-- /wp:paragraph -->"+
+            "<!-- wp:paragraph --><p>"+battery+"</p><!-- /wp:paragraph -->"
+                )
 
+
+def wp_table(dictionary):
+    s=['<!-- wp:table --><figure class="wp-block-table"><table><tbody>']
+    for key, value in dictionary.items():
+        s.append('<tr><td>'+key+'</td>')
+        s.append('<td>'+value+'</td>')
+        s.append('</tr>')
+    s.append('</tbody></table></figure><!-- /wp:table -->')
+    return ''.join(s)
+test_bal=contents+(wp_table(merge_data))    
+
+
+#print(contents)
 
 post = {'title': wp_title,
            'slug': slug,
            'status': status,
-           'content':contents,
+           'content':test_bal,
            'categories':'1',
            'author': '1',
            'format': 'standard',
 
            }
-r = requests.post(url + '/posts', headers=headers, json=post)
-print(r)
+send_post = requests.post(url + '/posts', headers=headers, json=post)
+print(send_post)
 
